@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { db } from '../_utils/firebase'; 
 import { collection, onSnapshot } from 'firebase/firestore';
 
-// --- 1. STABLE LUXURY IMAGES (Fixed & Tested) ---
+// --- 1. STABLE LUXURY IMAGES ---
 const STOCK_IMAGES: Record<string, string> = {
   default:  "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80", 
   facial:   "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=800&q=80", 
@@ -137,7 +137,7 @@ export default function HomePage() {
   }
 
   return (
-    <main className="min-h-screen bg-spa-cream text-spa-brown font-sans selection:bg-spa-gold selection:text-white relative">
+    <main className="min-h-screen w-full overflow-x-hidden bg-spa-cream text-spa-brown font-sans selection:bg-spa-gold selection:text-white relative">
       
       {/* HERO HEADER */}
       <header className="py-12 md:py-20 text-center animate-fade-in relative overflow-hidden">
@@ -160,19 +160,14 @@ export default function HomePage() {
               <div 
                 key={tab.id}
                 onClick={() => handleCategoryClick(tab.id)} 
-                // Grid Logic: Deals spans 2 cols on mobile
                 className={`
                   cursor-pointer group relative transition-all duration-500 ease-out
                   ${index === 0 ? 'col-span-2 md:col-span-1' : 'col-span-1'}
                 `}
               >
-                {/* VISUAL CONTAINER 
-                  - Removed 'opacity-80' logic. Everything is now visible.
-                  - Added 'ring' and 'scale' for selection.
-                  - Added 'hover:scale' for interaction.
-                */}
                 <div className={`
-                  ${index === 0 ? 'aspect-[2/1] md:aspect-[3/4]' : 'aspect-[3/4]'} 
+                  ${/* UPDATED: standard canonical aspect ratio classes */ ''}
+                  ${index === 0 ? 'aspect-2/1 md:aspect-3/4' : 'aspect-3/4'} 
                   relative overflow-hidden 
                   transition-all duration-500
                   ${isActive 
@@ -180,7 +175,6 @@ export default function HomePage() {
                     : 'hover:scale-[1.02] hover:shadow-xl shadow-md border border-transparent'}
                 `}>
                   
-                  {/* Image Container */}
                   <div className="w-full h-full bg-spa-beige/20 relative">
                     <ServiceImage 
                       src="" 
@@ -190,12 +184,11 @@ export default function HomePage() {
                         ${isActive ? 'scale-110' : 'group-hover:scale-110'}
                       `} 
                     />
-                    {/* Subtle Overlay to ensure text readability */}
                     <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-500"></div>
                   </div>
                   
-                  {/* Label Overlay */}
-                  <div className="absolute bottom-0 w-full h-1/2 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end justify-center pb-4">
+                  {/* UPDATED: bg-linear-to-t (New Standard) */}
+                  <div className="absolute bottom-0 w-full h-1/2 bg-linear-to-t from-black/80 via-black/20 to-transparent flex items-end justify-center pb-4">
                      <span className={`
                        text-xs md:text-sm font-bold uppercase tracking-widest text-white drop-shadow-lg 
                        border-b-2 pb-1 transition-all duration-300
@@ -212,7 +205,8 @@ export default function HomePage() {
       </section>
 
       {/* DYNAMIC LIST SECTION */}
-      <div ref={menuListRef} className="bg-white/50 py-12 min-h-[600px] border-t border-spa-gold/10 scroll-mt-4">
+      {/* UPDATED: min-h-150 (600px) */}
+      <div ref={menuListRef} className="bg-white/50 py-12 min-h-150 border-t border-spa-gold/10 scroll-mt-4">
         <div className="container mx-auto px-4">
           
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
@@ -239,14 +233,16 @@ export default function HomePage() {
                 <div key={item.id} className="group h-full">
                   {viewMode === 'grid' ? (
                     <div className="bg-white border border-spa-gold/10 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-full flex flex-col">
-                      <div className="aspect-[4/5] relative overflow-hidden bg-spa-beige/20">
+                      {/* UPDATED: aspect-4/5 */}
+                      <div className="aspect-4/5 relative overflow-hidden bg-spa-beige/20">
                         <ServiceImage 
                           src={item.image} 
                           alt={item.name} 
                           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                         />
                       </div>
-                      <div className="p-3 md:p-4 flex flex-col flex-grow text-center">
+                      {/* UPDATED: grow instead of flex-grow */}
+                      <div className="p-3 md:p-4 flex flex-col grow text-center">
                         <h3 className="font-display text-base md:text-lg text-spa-brown mb-1 leading-tight">{item.name}</h3>
                         <p className="text-spa-gold font-serif italic mb-2 text-sm">{item.price}</p>
                         <p className="text-gray-400 text-[10px] line-clamp-2 hidden md:block">{item.description}</p>
@@ -254,7 +250,8 @@ export default function HomePage() {
                     </div>
                   ) : (
                     <div className="bg-white border border-spa-gold/10 hover:shadow-md transition-all duration-300 flex h-full">
-                      <div className="w-24 md:w-[120px] shrink-0 relative overflow-hidden bg-spa-beige/20">
+                      {/* UPDATED: md:w-30 (120px) */}
+                      <div className="w-24 md:w-30 shrink-0 relative overflow-hidden bg-spa-beige/20">
                          <ServiceImage 
                           src={item.image} 
                           alt={item.name} 
@@ -278,7 +275,6 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* --- BACK TO TOP BUTTON --- */}
       <button 
         onClick={scrollToTop}
         className={`

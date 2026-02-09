@@ -1,26 +1,47 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@layer components {
+  @import "bootstrap/dist/css/bootstrap.min.css";
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@theme {
+  /* --- 🎨 THEME COLORS (This is the missing part!) --- */
+  
+  /* The Main Background (Light Cream) */
+  --color-spa-cream: #FDFBF7;
+  
+  /* The Card Background (Slightly Darker Beige) */
+  --color-spa-beige: #F4EFE6;
+  
+  /* The Text Color (Deep Earthy Brown) */
+  --color-spa-brown: #4A4036;
+  
+  /* The Luxury Accent (Muted Gold) */
+  --color-spa-gold: #C5A065;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  /* --- FONTS & ANIMATIONS --- */
+  --font-display: "Playfair Display", serif;
+  --animate-fade-in: fadeIn 1.2s ease-out forwards;
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 }
 
+/* Base styles using the new variables */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-spa-cream);
+  color: var(--color-spa-brown);
+  font-family: var(--font-display);
+}
+
+@layer utilities {
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
 }

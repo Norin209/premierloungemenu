@@ -40,7 +40,7 @@ export default function Footer() {
               </li>
               <li className="d-flex flex-column items-center gap-1">
                 <span className="text-white/40 text-xs uppercase">Booking</span>
-                <span className="font-display text-lg text-spa-gold">012 999 888</span>
+                <span className="font-display text-lg text-spa-gold">0122 260 68</span>
               </li>
             </ul>
           </div>

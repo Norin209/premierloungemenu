@@ -2,17 +2,16 @@ import React from 'react';
 
 export default function Footer() {
   return (
-    // 'overflow-hidden' prevents any accidental horizontal scrolling
-    <footer className="w-full bg-spa-brown text-white/90 pt-16 pb-8 border-t-4 border-spa-gold overflow-hidden">
+    // 'overflow-hidden' stops side-scrolling. 'pb-safe' (or generous pb) helps with iPhone home bar.
+    <footer className="w-full bg-spa-brown text-white/90 pt-16 pb-12 border-t-4 border-spa-gold overflow-hidden">
       <div className="container mx-auto px-6">
         
-        {/* MOBILE: grid-cols-1 (Stacked) | DESKTOP: grid-cols-3 (Row) */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-8">
           
-          {/* COL 1: Brand & Vibe */}
+          {/* COL 1: Brand */}
           <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
-            <h3 className="text-3xl font-display text-spa-gold mb-3">PREMIER</h3>
-            <p className="text-sm font-light text-white/60 leading-relaxed mb-6 max-w-sm">
+            <h3 className="text-3xl font-display text-spa-gold mb-3 tracking-wide">PREMIER</h3>
+            <p className="text-sm font-light text-white/60 leading-relaxed mb-6 max-w-sm antialiased">
               Where luxury meets wellness. Experience the finest Japanese and Korean spa treatments in the heart of Phnom Penh.
             </p>
             {/* Social Icons */}
@@ -29,37 +28,40 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* COL 2: Contact Info */}
-          {/* Centered on Mobile, Aligned top on Desktop */}
+          {/* COL 2: Contact */}
           <div className="flex flex-col items-center justify-start pt-2">
-            <h4 className="text-xs uppercase tracking-[0.2em] text-spa-gold mb-6">Contact Us</h4>
-            <ul className="space-y-4 text-center">
-              <li className="flex flex-col items-center gap-1">
+            <h4 className="text-xs uppercase tracking-[0.2em] text-spa-gold mb-6 font-semibold">Contact Us</h4>
+            <ul className="space-y-6 text-center">
+              <li className="flex flex-col items-center gap-2">
                 <span className="text-white/40 text-[10px] uppercase tracking-wider">Location</span>
-                <span className="font-display text-lg">Toul Kork, Phnom Penh</span>
+                <span className="font-display text-lg tracking-wide">Toul Kork, Phnom Penh</span>
               </li>
-              <li className="flex flex-col items-center gap-1">
+              <li className="flex flex-col items-center gap-2">
                 <span className="text-white/40 text-[10px] uppercase tracking-wider">Booking</span>
-                <span className="font-display text-lg text-spa-gold hover:text-white transition-colors cursor-pointer">
+                {/* SAFARI FIX: Explicitly using an <a> tag with 'tel:' prevents Safari from 
+                   auto-styling it blue. The '!text-spa-gold' forces your color.
+                */}
+                <a 
+                  href="tel:01226068" 
+                  className="font-display text-xl text-spa-gold! hover:text-white transition-colors no-underline"
+                >
                   012 260 68
-                </span>
+                </a>
               </li>
             </ul>
           </div>
 
           {/* COL 3: Hours */}
-          {/* Centered on Mobile, Right-aligned on Desktop */}
           <div className="flex flex-col items-center lg:items-end pt-2">
-            <h4 className="text-xs uppercase tracking-[0.2em] text-spa-gold mb-6">Opening Hours</h4>
-            {/* Fixed width w-56 ensures alignment, max-w-full prevents overflow on tiny screens */}
+            <h4 className="text-xs uppercase tracking-[0.2em] text-spa-gold mb-6 font-semibold">Opening Hours</h4>
             <div className="flex flex-col w-56 max-w-full">
-              <div className="flex justify-between border-b border-white/10 pb-2 mb-2">
+              <div className="flex justify-between border-b border-white/10 pb-2 mb-3">
                 <span className="text-white/60 text-sm">Mon - Fri</span>
-                <span className="font-mono text-sm">9:00 - 21:00</span>
+                <span className="font-mono text-sm tracking-widest">9:00 - 21:00</span>
               </div>
-              <div className="flex justify-between border-b border-white/10 pb-2 mb-2">
+              <div className="flex justify-between border-b border-white/10 pb-2 mb-3">
                 <span className="text-white/60 text-sm">Sat - Sun</span>
-                <span className="font-mono text-sm">10:00 - 22:00</span>
+                <span className="font-mono text-sm tracking-widest">10:00 - 22:00</span>
               </div>
             </div>
           </div>
@@ -67,7 +69,7 @@ export default function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="border-t border-white/10 mt-16 pt-8 text-center">
+        <div className="border-t border-white/10 mt-16 pt-8 text-center pb-8 md:pb-0">
           <p className="text-[10px] text-white/30 uppercase tracking-[0.2em]">
             © 2026 Premier Lounge. All rights reserved.
           </p>

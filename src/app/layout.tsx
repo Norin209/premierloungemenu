@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
-// 1. Import the luxury font (Playfair) alongside the default fonts
 import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
-// 2. Import your new components (Make sure these files exist first!)
 import Navbar from "../_component/Navbar";
 import Footer from "../_component/Footer";
 
@@ -17,14 +15,12 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// 3. Configure the Premier font
 const playfair = Playfair_Display({
-  variable: "--font-playfair", // This matches the var we used in globals.css
+  variable: "--font-playfair",
   subsets: ["latin"],
   display: "swap",
 });
 
-// 4. Update Metadata for SEO
 export const metadata: Metadata = {
   title: "Premier Lounge | Wellness & Beauty",
   description: "Luxury Spa, Salon, and Wellness Center in Phnom Penh. Est 2026.",
@@ -37,16 +33,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      {/* FIX ADDED BELOW: suppressHydrationWarning={true} 
+        This tells React to ignore extra attributes added by browser extensions (like Grammarly)
+      */}
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} antialiased bg-spa-cream`}
+        suppressHydrationWarning={true}
       >
-        {/* Sticky Header */}
         <Navbar />
-
-        {/* Main Content (HomePage) */}
         {children}
-
-        {/* Site Footer */}
         <Footer />
       </body>
     </html>

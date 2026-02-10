@@ -15,8 +15,8 @@ export default function Navbar() {
             </span>
           </div>
 
-          {/* CENTER: LOGO (Adjusted visual alignment) */}
-          {/* Added 'mt-2' to nudge the whole logo down slightly for visual balance */}
+          {/* CENTER: LOGO */}
+          {/* Kept 'mt-2' for that visual alignment you liked */}
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center mt-2">
             <a href="/" className="group block no-underline">
               <h1 className="text-2xl md:text-3xl font-display font-bold text-spa-brown tracking-tighter group-hover:text-spa-gold transition-colors duration-300 whitespace-nowrap">
@@ -28,9 +28,15 @@ export default function Navbar() {
             </a>
           </div>
 
-          {/* RIGHT: Gallery Icon */}
+          {/* RIGHT: Gallery Icon (Now Linked to Instagram) */}
           <div className="w-auto md:w-25 flex justify-end items-center ml-auto">
-            <button className="text-spa-brown hover:text-spa-gold transition-colors group flex items-center gap-2">
+            <a 
+              href="https://www.instagram.com/premierlounge_1/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-spa-brown hover:text-spa-gold transition-colors group flex items-center gap-2 no-underline"
+              aria-label="View Gallery on Instagram"
+            >
               <span className="hidden md:block text-[10px] uppercase tracking-widest opacity-50 group-hover:opacity-100 transition-opacity duration-300">
                 Gallery
               </span>
@@ -41,7 +47,7 @@ export default function Navbar() {
                   <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
                 </svg>
               </div>
-            </button>
+            </a>
           </div>
 
         </div>

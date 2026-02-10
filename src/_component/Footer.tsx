@@ -2,78 +2,112 @@ import React from 'react';
 
 export default function Footer() {
   return (
-    // 'overflow-hidden' stops side-scrolling. 'pb-safe' (or generous pb) helps with iPhone home bar.
-    <footer className="w-full bg-spa-brown text-white/90 pt-16 pb-12 border-t-4 border-spa-gold overflow-hidden">
-      <div className="container mx-auto px-6">
+    <footer className="w-full bg-spa-cream text-spa-brown pt-20 pb-10 border-t border-spa-brown/5 overflow-hidden relative">
+      
+      <div className="container mx-auto px-6 relative z-10">
         
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-8">
+        {/* TOP SECTION: The Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 mb-20">
           
           {/* COL 1: Brand */}
-          <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
-            <h3 className="text-3xl font-display text-spa-gold mb-3 tracking-wide">PREMIER</h3>
-            <p className="text-sm font-light text-white/60 leading-relaxed mb-6 max-w-sm antialiased">
-              Where luxury meets wellness. Experience the finest Japanese and Korean spa treatments in the heart of Phnom Penh.
+          <div className="flex flex-col items-start">
+            <h3 className="text-3xl font-display font-bold text-spa-brown mb-6">PREMIER</h3>
+            <p className="text-sm font-sans text-spa-brown/60 leading-relaxed max-w-xs mb-6">
+              The Art of Wellness. <br/>
+              Est. 2026 • Phnom Penh
             </p>
-            {/* Social Icons */}
-            <div className="flex gap-3">
-              {[
-                <svg key="fb" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>,
-                <svg key="ig" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>,
-                <svg key="tt" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
-              ].map((icon, i) => (
-                <a key={i} href="#" className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-spa-gold hover:border-spa-gold hover:text-white transition-all text-white/60">
-                  {icon}
-                </a>
-              ))}
+            
+            {/* SOCIAL ICONS (Linked to your actual profiles) */}
+            <div className="flex gap-4">
+               {/* Instagram: @PREMIERLOUNGE_1 */}
+               <a 
+                 href="https://www.instagram.com/premierlounge_1/" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 className="text-spa-brown/40 hover:text-spa-gold transition-colors"
+                 aria-label="Instagram"
+               >
+                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+               </a>
+               
+               {/* Facebook: Link Provided */}
+               <a 
+                 href="https://www.facebook.com/share/14NgD5WSaLg/?mibextid=wwXIfr" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 className="text-spa-brown/40 hover:text-spa-gold transition-colors"
+                 aria-label="Facebook"
+               >
+                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+               </a>
             </div>
           </div>
 
-          {/* COL 2: Contact */}
-          <div className="flex flex-col items-center justify-start pt-2">
-            <h4 className="text-xs uppercase tracking-[0.2em] text-spa-gold mb-6 font-semibold">Contact Us</h4>
-            <ul className="space-y-6 text-center">
-              <li className="flex flex-col items-center gap-2">
-                <span className="text-white/40 text-[10px] uppercase tracking-wider">Location</span>
-                <span className="font-display text-lg tracking-wide">Toul Kork, Phnom Penh</span>
-              </li>
-              <li className="flex flex-col items-center gap-2">
-                <span className="text-white/40 text-[10px] uppercase tracking-wider">Booking</span>
-                {/* SAFARI FIX: Explicitly using an <a> tag with 'tel:' prevents Safari from 
-                   auto-styling it blue. The '!text-spa-gold' forces your color.
-                */}
+          {/* COL 2: Visit */}
+          <div className="flex flex-col items-start">
+            <h4 className="text-xs uppercase tracking-[0.2em] text-spa-gold font-bold mb-6">Visit</h4>
+            <address className="not-italic text-spa-brown/70 font-sans space-y-2 text-sm leading-loose">
+              <p>Toul Kork District</p>
+              <p>St 315, Phnom Penh</p>
+              <p>Cambodia</p>
+            </address>
+          </div>
+
+          {/* COL 3: Contact */}
+          <div className="flex flex-col items-start">
+            <h4 className="text-xs uppercase tracking-[0.2em] text-spa-gold font-bold mb-6">Booking</h4>
+            <ul className="space-y-4 text-sm text-spa-brown/70">
+              <li>
+                {/* FIXED: 'text-spa-brown!' forces the color, blocking Safari blue links */}
                 <a 
                   href="tel:01226068" 
-                  className="font-display text-xl text-spa-gold! hover:text-white transition-colors no-underline"
+                  className="hover:text-spa-gold transition-colors text-xl font-display tracking-wide block text-spa-brown! no-underline"
                 >
                   012 260 68
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="mailto:hello@premierlounge.com" 
+                  className="hover:text-spa-gold transition-colors text-xs uppercase tracking-wider opacity-60 text-spa-brown! no-underline"
+                >
+                  hello@premierlounge.com
                 </a>
               </li>
             </ul>
           </div>
 
-          {/* COL 3: Hours */}
-          <div className="flex flex-col items-center lg:items-end pt-2">
-            <h4 className="text-xs uppercase tracking-[0.2em] text-spa-gold mb-6 font-semibold">Opening Hours</h4>
-            <div className="flex flex-col w-56 max-w-full">
-              <div className="flex justify-between border-b border-white/10 pb-2 mb-3">
-                <span className="text-white/60 text-sm">Mon - Fri</span>
-                <span className="font-mono text-sm tracking-widest">9:00 - 21:00</span>
-              </div>
-              <div className="flex justify-between border-b border-white/10 pb-2 mb-3">
-                <span className="text-white/60 text-sm">Sat - Sun</span>
-                <span className="font-mono text-sm tracking-widest">10:00 - 22:00</span>
-              </div>
-            </div>
+           {/* COL 4: Hours */}
+           <div className="flex flex-col items-start">
+            <h4 className="text-xs uppercase tracking-[0.2em] text-spa-gold font-bold mb-6">Hours</h4>
+            <ul className="space-y-3 text-sm font-sans text-spa-brown/70 w-full">
+              {/* FIXED: 'max-w-50' clears the yellow warning */}
+              <li className="flex justify-between w-full max-w-50 border-b border-spa-brown/10 pb-2">
+                <span>Mon - Fri</span>
+                <span className="font-bold text-spa-brown">09:00 - 21:00</span>
+              </li>
+              <li className="flex justify-between w-full max-w-50 border-b border-spa-brown/10 pb-2">
+                <span>Sat - Sun</span>
+                <span className="font-bold text-spa-brown">10:00 - 22:00</span>
+              </li>
+            </ul>
           </div>
 
         </div>
 
-        {/* Copyright */}
-        <div className="border-t border-white/10 mt-16 pt-8 text-center pb-8 md:pb-0">
-          <p className="text-[10px] text-white/30 uppercase tracking-[0.2em]">
-            © 2026 Premier Lounge. All rights reserved.
+        {/* BOTTOM SECTION */}
+        <div className="border-t border-spa-brown/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          
+          <p className="text-[10px] text-spa-brown/30 uppercase tracking-[0.2em]">
+            © 2026 Premier Lounge
           </p>
+
+          {/* FIXED: '-bottom-2.5' clears the yellow warning */}
+          <h1 className="text-4xl md:text-6xl font-display text-spa-brown/5 tracking-tighter pointer-events-none select-none absolute -bottom-2.5 right-0 md:static md:bottom-auto md:right-auto">
+            PREMIER
+          </h1>
         </div>
+
       </div>
     </footer>
   );
